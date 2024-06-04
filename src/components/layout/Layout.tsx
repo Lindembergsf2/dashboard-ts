@@ -10,7 +10,7 @@ interface LayoutProps {
     children: React.ReactNode;
   }
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className={styles.container}>
             <Header />

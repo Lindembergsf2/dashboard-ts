@@ -3,6 +3,7 @@
     background-color: #f0f0f0;
     padding: 1rem;
     box-sizing: border-box;
+    border-radius: 30px;
 }
  
 .navigation ul {
