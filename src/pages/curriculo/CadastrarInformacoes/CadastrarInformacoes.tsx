@@ -3,12 +3,15 @@ import React from "react";
 import styles from './CadastrarInformacoes.module.css';
 
 import * as Yup from 'yup';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, } from 'formik';
+
+import Input from "../../../components/forms/Input";
+import TextArea from "../../../components/forms/Textarea";
 
 interface FormValues {
     foto: string;
     nome: string;
-    cargo: string;
+    titulo: string;
     resumo: string;
 
 }
@@ -19,7 +22,7 @@ const CadastrarInformacoes: React.FC = () => {
     const initialValues: FormValues = {
         foto: '',
         nome: '',
-        cargo: '',
+        titulo: '',
         resumo: '',
 
     };
@@ -27,7 +30,7 @@ const CadastrarInformacoes: React.FC = () => {
     const validationSchema = Yup.object().shape({
         foto: Yup.string().required('Campo obrigatório'),
         nome: Yup.string().required('Campo obrigatório'),
-        cargo: Yup.string().required('Campo obrigatório'),
+        titulo: Yup.string().required('Campo obrigatório'),
         resumo: Yup.string().required('Campo obrigatório'),
     });
 
@@ -42,62 +45,42 @@ const CadastrarInformacoes: React.FC = () => {
 
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {({ errors, touched }) => (
-                <Form className={styles.form}>
 
-                    <h2 className={styles.title}>Informações Pessoais</h2>
+                    <Form className={styles.form}>
 
-                    <fieldset className={styles.formGroup}>
-                        <Field
-                            type="text"
-                            name="nome"
-                            id="nome"
-                            className={`${styles.input} ${touched.foto && errors.foto ? styles.error : ''}`}
+                        <h2 className={styles.title}>Informações Pessoais</h2>
+
+                        <Input name="nome"
+                            errors={errors.nome}
+                            touched={touched.nome}
                             placeholder="Nome"
                         />
-                        <ErrorMessage name="nome" component="div" className={styles.errorMsg} />
-                    </fieldset>
 
-                    <fieldset className={styles.formGroup}>
-                        <Field
-                            type="text"
-                            name="foto"
-                            id="foto"
-                            className={`${styles.input} ${touched.foto && errors.foto ? styles.error : ''}`}
+                        <Input name="foto"
+                            errors={errors.foto}
+                            touched={touched.foto}
                             placeholder="Foto (Insira o link da sua imagem)"
                         />
-                        <ErrorMessage name="foto" component="div" className={styles.errorMsg} />
-                    </fieldset>
 
-                    <fieldset className={styles.formGroup}>
-                        <Field
-                            type="text"
-                            name="cargo"
-                            id="cargo"
-                            className={`${styles.input} ${touched.foto && errors.foto ? styles.error : ''}`}
-                            placeholder="Cargo"
+                        <Input name="titulo"
+                            errors={errors.titulo}
+                            touched={touched.titulo}
+                            placeholder="Titulo do resumo"
                         />
-                        <ErrorMessage name="cargo" component="div" className={styles.errorMsg} />
-                    </fieldset>
 
-                    <fieldset className={styles.formGroup}>
-                        <Field
-                            as="textarea"
-                            className={`${styles.textarea} ${touched.foto && errors.foto ? styles.error : ''}`}
+                        <TextArea
                             name="resumo"
-                            id="resumo"
+                            errors={errors.resumo}
+                            touched={touched.resumo}
                             placeholder="Resumo"
-                            rows={7}>
+                        />
 
-                        </Field>
-                        <ErrorMessage name="resumo" component="div" className={styles.errorMsg} />
-                    </fieldset>
+                        <button type="submit" className={styles.button}>Cadastrar</button>
 
-                    <button type="submit" className={styles.button}>Cadastrar</button>
-
-                </Form>
+                    </Form>
                 )}
             </Formik>
-            
+
         </div>
     );
 };

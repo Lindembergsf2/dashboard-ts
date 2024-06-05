@@ -8,6 +8,7 @@ import Layout from './components/layout';
 
 import Home from './pages/home';
 import CadastrarInformacoes from './pages/curriculo/CadastrarInformacoes';
+import CadastrarExperiencias from './pages/curriculo/Cadastrarexperiencias';
 
 
 const App: React.FC = () => {
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/curriculo/informacoes/cadastro' element={<CadastrarInformacoes />} />
+            <Route path='/curriculo/experiencias/cadastro' element={<CadastrarExperiencias />} />
           </Routes>
         </Layout>
       </BrowserRouter>
