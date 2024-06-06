@@ -49,7 +49,7 @@ const Sidebar: React.FC = () => {
                     </li>
                     <li>
                         <NavLink to="/portfolio/lista" className={styles.active}>
-                            Listar de Portfólios
+                            Listar Portfólios
                         </NavLink>
                     </li>
                 </ul>
