@@ -4,12 +4,13 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Layout from './components/layout';
-import ListaPortfolio from './pages/portfolio/ListaPortfolio';
 
 
 import Home from './pages/home';
 import CadastrarInformacoes from './pages/curriculo/CadastrarInformacoes';
 import CadastrarExperiencias from './pages/curriculo/Cadastrarexperiencias';
+import ListaPortfolio from './pages/portfolio/ListaPortfolio';
+import ListarExperiencia from './pages/curriculo/ListarExperiencia/ListarExperiencia';
 
 
 const App: React.FC = () => {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
             <Route path='/' element={<Home />} />
             <Route path='/curriculo/informacoes/cadastro' element={<CadastrarInformacoes />} />
             <Route path='/curriculo/experiencias/cadastro' element={<CadastrarExperiencias />} />
+            <Route path='/curriculo/experiencias/lista' element={<ListarExperiencia />} />
             <Route path='/portfolio/lista' element={<ListaPortfolio />} />
           </Routes>
         </Layout>
