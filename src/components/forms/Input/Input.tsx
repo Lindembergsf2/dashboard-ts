@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = ({ name, type = 'text', errors, touched, pla
                 className={`${styles.input} ${touched && errors ? styles.error : ''}`}
                 placeholder={placeholder}
             />
-            <ErrorMessage name="nome" component="div" className={styles.errorMsg} />
+            <ErrorMessage name={name} component="div" className={styles.errorMsg} />
         </fieldset>
     )
 };

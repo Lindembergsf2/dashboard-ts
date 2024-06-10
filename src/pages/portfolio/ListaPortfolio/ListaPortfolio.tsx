@@ -26,14 +26,17 @@ const ListaPortfolio: React.FC = () => {
             image: "https://i.ibb.co/9qHyVMp/card-site-3.png",
             title: "Material Social Media Estetica Automotiva"
         }
+    
     ]);
 
+    console.log(setPortfolio);
     const handleEdit = (index: number) => {
-        setPortfolio([...portfolio.slice(0, index), ...portfolio.slice(index + 1)]);
+        console.log(index);
+        
     }
 
     const handleDelete = (index: number) => {
-        setPortfolio(portfolio.filter((_, i) => i !== index));
+        console.log(index);
     }
 
     return (
@@ -44,7 +47,7 @@ const ListaPortfolio: React.FC = () => {
                     <th>Título</th>
                     <th>imagem</th>
                     <th>Links</th>
-                    <th>Ações</th>    
+                    <th>Ações</th>
                 </tr>
             </thead>
 
@@ -54,8 +57,11 @@ const ListaPortfolio: React.FC = () => {
                         <td>{itemPortfolio.title}</td>
                         <td><img src={itemPortfolio.image} alt={itemPortfolio.title} className={styles.image} /></td>
                         <td><a href={itemPortfolio.link} target="_blank" rel="noreferrer">{itemPortfolio.link}</a></td>
-                        <td><button className={styles.btnEdit} onClick={() => handleEdit(index)}>Editar</button></td>
-                        <td><button className={styles.btnDelete} onClick={() => handleDelete(index)}>Deletar</button></td>
+                        <td>
+                            <button className={styles.btnEdit} onClick={() => handleEdit(index)}>Editar</button>
+                            <button className={styles.btnDelete} onClick={() => handleDelete(index)}>Deletar</button>
+                        </td>
+
                     </tr>
                 ))}
             </tbody>

@@ -23,7 +23,7 @@ const Textarea: React.FC<TextareaProps> = ({ name, errors, touched, placeholder 
                 placeholder={placeholder}
                 rows={5}
             />
-            <ErrorMessage name="nome" component="div" className={styles.errorMsg} />
+            <ErrorMessage name={name} component="div" className={styles.errorMsg} />
         </fieldset>
     )
 };
