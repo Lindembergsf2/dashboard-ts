@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Layout from './components/layout';
 
-
 import Home from './pages/home';
 import CadastrarInformacoes from './pages/curriculo/CadastrarInformacoes';
 import CadastrarExperiencias from './pages/curriculo/Cadastrarexperiencias';
