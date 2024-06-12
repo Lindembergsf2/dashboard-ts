@@ -24,6 +24,14 @@
       "tipo": "Acadêmico",
       "anoInicio": "2016",
       "anoFim": "2017"
+    },
+    {
+      "id": 2,
+      "titulo": "Designer Gráfico (Autônomo MEI)",
+      "descricao": "",
+      "tipo": "Profissional",
+      "anoInicio": "2020",
+      "anoFim": "2024"
     }
   ],
   "portfolio": []

@@ -9,9 +9,13 @@ import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
 import Select from "../../../components/forms/Select";
 
+import { useNavigate } from "react-router-dom";
+
 import { Experiencia, createExperiencia, getExperiencias } from "../../../Services/experienciaService";
 
 const CadastrarExperiencia: React.FC = () => {
+
+    const navigate = useNavigate();
 
     const initialValues: Experiencia = {
         id: 0,
@@ -36,6 +40,7 @@ const CadastrarExperiencia: React.FC = () => {
             await createExperiencia(values);
             console.log({ values })
             resetForm();
+            navigate('/curriculo/experiencias/lista')
             alert('Formulário enviado com sucesso!');
         } catch (error) {
             console.error('Erro ao enviar o formulário:', error);
