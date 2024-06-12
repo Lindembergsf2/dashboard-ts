@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from './ListarExperiencias.module.css'
+import { getExperiencias } from "../../../Services/experienciaService";
 
 interface Experiencia {
     titulo: string;
@@ -12,32 +13,20 @@ interface Experiencia {
 
 const ListarExperiencia: React.FC = () => {
    
-    const [experiencias, setExperiencias] = React.useState<Experiencia[]>([
-        {
-            titulo: "Desenvolvedor Web",
-            descricao: "Desenvolvimento de sites e aplicativos web.",
-            tipo: "Freelancer",
-            anoInicio: 2022,
-            anoFim: 2023,
-        },
-        {
-            titulo: "Desenvolvedor Web",
-            descricao: "Desenvolvimento de sites e aplicativos web.",
-            tipo: "Freelancer",
-            anoInicio: 2022,
-            anoFim: 2023,
-        },
-        {
-            titulo: "Desenvolvedor Web",
-            descricao: "Desenvolvimento de sites e aplicativos web.",
-            tipo: "Freelancer",
-            anoInicio: 2022,
-            anoFim: 2023,
-        },
-    ]);
+    const [experiencias, setExperiencias] = React.useState<Experiencia[]>([]);
 
-    console.log(setExperiencias);
+    const fetchExperiencias = async () => {
+        try {
+            const experiencia= await getExperiencias();
+            setExperiencias(experiencia);
+        } catch (error) {
+            console.error('Erro ao buscar as experiências:', error);
+        }
+    };
     
+    useEffect(() => {
+        fetchExperiencias();
+    })
     const handleDelete = (index: number) => {
         console.log(index);
     };

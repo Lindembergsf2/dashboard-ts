@@ -21,4 +21,4 @@ export async function getInformacao(): Promise<Informacoes> {
 export async function deleteInformacao(informacao: Informacoes): Promise<Informacoes> {
     const response = await api.delete<Informacoes>("/informacoes/1", { data: informacao });
     return response.data;
-}
+};

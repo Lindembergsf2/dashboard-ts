@@ -8,6 +8,23 @@
       "resumo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     }
   ],
-  "experiencias": [],
+  "experiencias": [
+    {
+      "id": 0,
+      "titulo": "Eletricista (Autônomo MEI)",
+      "descricao": "",
+      "tipo": "Profissional",
+      "anoInicio": "2018",
+      "anoFim": "2020"
+    },
+    {
+      "id": 1,
+      "titulo": "Montagem e Manutenção de Computadores (UFRPE - PRONATEC)",
+      "descricao": "",
+      "tipo": "Acadêmico",
+      "anoInicio": "2016",
+      "anoFim": "2017"
+    }
+  ],
   "portfolio": []
 }
