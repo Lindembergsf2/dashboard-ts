@@ -7,7 +7,7 @@ import { Formik, Form, } from 'formik';
 
 import Input from "../../../components/forms/Input";
 import TextArea from "../../../components/forms/Textarea";
-import { Informacoes, createInformacao, getInformacao } from "../../../Services/informacoesService";
+import { Informacoes, updateInformacao, getInformacao } from "../../../Services/informacoesService";
 import InformacoesCard from "./InformacoesCard";
 
 const CadastrarInformacoes: React.FC = () => {
@@ -46,7 +46,7 @@ const CadastrarInformacoes: React.FC = () => {
     const onSubmit = async (values: Informacoes, { resetForm }: { resetForm: () => void }) => {
         try {
 
-            await createInformacao(values);
+            await updateInformacao(values);
             setInformacoes(values)
             console.log({ values })
             resetForm();
@@ -59,10 +59,25 @@ const CadastrarInformacoes: React.FC = () => {
 
     };
 
+    const handleDelete = async () => {
+        try {
+            await updateInformacao(initialValues);
+            setInformacoes(initialValues)
+            console.log({ initialValues })
+            alert('Informações deletadas com sucesso!');
+        } catch (error) {
+            console.error('Erro ao deletar o informações:', error);
+        }
+    }
+
     return (
         <div className={styles.formWrapper}>
 
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+            <Formik
+                initialValues={informacoes}
+                enableReinitialize={true}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}>
                 {({ errors, touched }) => (
 
                     <Form className={styles.form}>
@@ -100,8 +115,22 @@ const CadastrarInformacoes: React.FC = () => {
                 )}
             </Formik>
 
-            <InformacoesCard informacao={informacoes}/>
+            {informacoes &&
+                Object.entries(informacoes).some(
+                    ([key, value]) => key != "id" && value.trim() != ""
+                ) && (
+                    <div className={styles.cardContainer}>
 
+                        <InformacoesCard informacao={informacoes} />
+
+                        <button type="button"
+                            onClick={handleDelete}
+                            className={`${styles.deleteButton} ${styles.button}`}>
+                            Deletar
+                        </button>
+
+                    </div>
+                )}
         </div>
     );
 };

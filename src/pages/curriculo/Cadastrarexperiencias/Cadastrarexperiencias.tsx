@@ -64,7 +64,7 @@ const CadastrarExperiencia: React.FC = () => {
                     <Select
                         name="tipo"
                         options={[
-                            { value: 'Pessoal', label: 'Pessoal' },
+                            { value: 'Acadêmico', label: 'Acadêmico' },
                             { value: 'Profissional', label: 'Profissional' },
                         ]}
 

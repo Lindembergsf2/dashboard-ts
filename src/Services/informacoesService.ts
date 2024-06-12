@@ -8,7 +8,7 @@ export interface Informacoes {
     resumo: string;
 };
 
-export async function createInformacao(informacao: Informacoes): Promise<Informacoes> {
+export async function updateInformacao(informacao: Informacoes): Promise<Informacoes> {
     const response = await api.put<Informacoes>("/informacoes/1", informacao);
     return response.data;
 };
@@ -18,7 +18,7 @@ export async function getInformacao(): Promise<Informacoes> {
     return response.data;
 };
 
-export async function updateInformacao(informacao: Informacoes): Promise<Informacoes> {
-    const response = await api.post<Informacoes>("/informacoes/1", informacao);
+export async function deleteInformacao(informacao: Informacoes): Promise<Informacoes> {
+    const response = await api.delete<Informacoes>("/informacoes/1", { data: informacao });
     return response.data;
-};
+}
