@@ -10,7 +10,7 @@
   ],
   "experiencias": [
     {
-      "id": 0,
+      "id": "0",
       "titulo": "Eletricista (Autônomo MEI)",
       "descricao": "",
       "tipo": "Profissional",
@@ -18,7 +18,7 @@
       "anoFim": "2020"
     },
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Montagem e Manutenção de Computadores (UFRPE - PRONATEC)",
       "descricao": "",
       "tipo": "Acadêmico",
@@ -26,11 +26,19 @@
       "anoFim": "2017"
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Designer Gráfico (Autônomo MEI)",
       "descricao": "",
       "tipo": "Profissional",
       "anoInicio": "2020",
+      "anoFim": "2024"
+    },
+    {
+      "id": 3,
+      "titulo": "Eletricista (Autônomo MEI) Teste",
+      "descricao": "",
+      "tipo": "Profissional",
+      "anoInicio": "2018",
       "anoFim": "2024"
     }
   ],

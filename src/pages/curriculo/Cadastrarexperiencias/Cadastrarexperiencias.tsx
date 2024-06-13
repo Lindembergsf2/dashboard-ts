@@ -4,18 +4,20 @@ import styles from './Cadastrarexperiencias.module.css';
 
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
 import Select from "../../../components/forms/Select";
 
-import { useNavigate } from "react-router-dom";
-
-import { Experiencia, createExperiencia, getExperiencias } from "../../../Services/experienciaService";
+import { Experiencia, createOrUpdateExperiencia, getExperiencias } from "../../../services/experienciaService";
 
 const CadastrarExperiencia: React.FC = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const experiencia = location.state?.experiencia|| {};
 
     const initialValues: Experiencia = {
         id: 0,
@@ -36,8 +38,8 @@ const CadastrarExperiencia: React.FC = () => {
     const onSubmit = async (values: Experiencia, { resetForm }: { resetForm: () => void }) => {
         try {
             const experiencias = await getExperiencias()
-            values.id = experiencias.length
-            await createExperiencia(values);
+            values.id = experiencias.length + 1;
+            await createOrUpdateExperiencia(values);
             console.log({ values })
             resetForm();
             navigate('/curriculo/experiencias/lista')
@@ -51,7 +53,7 @@ const CadastrarExperiencia: React.FC = () => {
     return (
         <div className={styles.formWrapper}>
             <Formik
-                initialValues={initialValues}
+                initialValues={experiencia || initialValues}
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}>
 
@@ -98,7 +100,7 @@ const CadastrarExperiencia: React.FC = () => {
                             touched={touched.descricao}
                         />
 
-                        <button type="submit" className={styles.button}>Cadastrar</button>
+                        <button type="submit" className={styles.button}>Salvar</button>
 
                     </Form>
                 )}

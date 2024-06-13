@@ -10,7 +10,7 @@ export interface Experiencia {
 };
 
 export const createExperiencia = async (experiencia: Experiencia) => {
-    const response = await api.post<Experiencia>("/experiencias", experiencia);
+    const response = await api.post("/experiencias", experiencia);
     return response.data;
 };
 
@@ -32,4 +32,12 @@ export const updateExperiencia = async (experiencia: Experiencia) => {
 export const deleteExperiencia = async (id: number) => {
     const response = await api.delete(`/experiencias/${id}`);
     return response.data;
+};
+
+export const createOrUpdateExperiencia = async (experiencia: Experiencia) => {
+    if (experiencia.id === 0) {
+        return createExperiencia(experiencia);
+    } else {
+        return updateExperiencia(experiencia);
+    }
 };
