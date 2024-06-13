@@ -10,14 +10,6 @@
   ],
   "experiencias": [
     {
-      "id": "0",
-      "titulo": "Eletricista (Autônomo MEI)",
-      "descricao": "",
-      "tipo": "Profissional",
-      "anoInicio": "2018",
-      "anoFim": "2020"
-    },
-    {
       "id": "1",
       "titulo": "Montagem e Manutenção de Computadores (UFRPE - PRONATEC)",
       "descricao": "",
@@ -34,11 +26,19 @@
       "anoFim": "2024"
     },
     {
-      "id": 3,
-      "titulo": "Eletricista (Autônomo MEI) Teste",
+      "id": "3",
+      "titulo": "Eletricista (Autônomo MEI) Teste 1234",
       "descricao": "",
       "tipo": "Profissional",
       "anoInicio": "2018",
+      "anoFim": "2024"
+    },
+    {
+      "id": 0,
+      "titulo": "Bootcamp de Desenvolvimento de Software (Usina Academy)",
+      "descricao": "",
+      "tipo": "Acadêmico",
+      "anoInicio": "2024",
       "anoFim": "2024"
     }
   ],

@@ -7,7 +7,7 @@ import { Formik, Form, } from 'formik';
 
 import Input from "../../../components/forms/Input";
 import TextArea from "../../../components/forms/Textarea";
-import { Informacoes, updateInformacao, getInformacao } from "../../../services/informacoesService";
+import { Informacoes, updateInformacao, getInformacao } from "../../../Services/informacoesService";
 import InformacoesCard from "./InformacoesCard";
 
 const CadastrarInformacoes: React.FC = () => {

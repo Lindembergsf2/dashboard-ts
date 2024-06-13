@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import styles from './ListarExperiencias.module.css'
-import { Experiencia, getExperiencias } from "../../../services/experienciaService";
-import { useNavigate } from "react-router-dom";
+import { Experiencia, getExperiencias } from "../../../Services/experienciaService";
 
 
 
@@ -10,7 +11,7 @@ const ListarExperiencia: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const [experiencias, setExperiencias] = React.useState<Experiencia[]>([]);
+    const [experiencias, setExperiencias] = useState<Experiencia[]>([]);
 
     const fetchExperiencias = async () => {
         try {
@@ -20,7 +21,7 @@ const ListarExperiencia: React.FC = () => {
             console.log('Erro ao buscar as experiências:', error);
         }
     };
-
+                                                                                                                                                       
     useEffect(() => {
         fetchExperiencias();
     });
