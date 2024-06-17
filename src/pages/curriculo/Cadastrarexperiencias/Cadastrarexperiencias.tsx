@@ -11,7 +11,7 @@ import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
 import Select from "../../../components/forms/Select";
 
-import { Experiencia, createOrUpdateExperiencia, getExperiencias } from "../../../Services/experienciaService";
+import { Experiencia, createOrUpdateExperiencia, } from "../../../Services/experienciaService";
 
 const CadastrarExperiencia: React.FC = () => {
 
