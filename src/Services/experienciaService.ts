@@ -1,7 +1,7 @@
 import api from "./api";
 
 export interface Experiencia {
-    id: number;
+    id: string;
     titulo: string;
     descricao?: string;
     tipo: string;
@@ -10,6 +10,7 @@ export interface Experiencia {
 };
 
 export const createExperiencia = async (experiencia: Experiencia) => {
+    experiencia.id = ((await getExperiencias()).length +1).toString();
     const response = await api.post("/experiencias", experiencia);
     return response.data;
 };
@@ -29,13 +30,14 @@ export const updateExperiencia = async (experiencia: Experiencia) => {
     return response.data;
 };
 
-export const deleteExperiencia = async (id: number) => {
-    const response = await api.delete(`/experiencias/${id}`);
+export const deleteExperiencia = async (experiencia: Experiencia) => {
+    const response = await api.delete<Experiencia>(`/experiencias/${experiencia.id}`);
     return response.data;
+    
 };
 
 export const createOrUpdateExperiencia = async (experiencia: Experiencia) => {
-    if (experiencia.id === 0) {
+    if (experiencia.id === "0") {
         return createExperiencia(experiencia);
     } else {
         return updateExperiencia(experiencia);

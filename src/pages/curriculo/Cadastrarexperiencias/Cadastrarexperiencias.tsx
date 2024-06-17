@@ -11,7 +11,7 @@ import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
 import Select from "../../../components/forms/Select";
 
-import { Experiencia, createOrUpdateExperiencia, } from "../../../Services/experienciaService";
+import { Experiencia, createOrUpdateExperiencia } from "../../../Services/experienciaService";
 
 const CadastrarExperiencia: React.FC = () => {
 
@@ -20,7 +20,7 @@ const CadastrarExperiencia: React.FC = () => {
     const experiencia = location.state?.experiencia || null;
 
     const initialValues: Experiencia = {
-        id: 0,
+        id: "0",
         titulo: "",
         descricao: "",
         tipo: "",
@@ -37,8 +37,8 @@ const CadastrarExperiencia: React.FC = () => {
 
     const onSubmit = async (values: Experiencia, { resetForm }: { resetForm: () => void }) => {
         try {
-            await createOrUpdateExperiencia(values);
             console.log({ values })
+            await createOrUpdateExperiencia(values);
             resetForm();
             navigate('/curriculo/experiencias/lista')
             alert('Formulário enviado com sucesso!');

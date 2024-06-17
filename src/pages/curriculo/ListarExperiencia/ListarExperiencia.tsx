@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from './ListarExperiencias.module.css'
-import { Experiencia, getExperiencias } from "../../../Services/experienciaService";
+import { Experiencia, getExperiencias, deleteExperiencia } from "../../../Services/experienciaService";
 
 
 
@@ -24,14 +24,22 @@ const ListarExperiencia: React.FC = () => {
                                                                                                                                                        
     useEffect(() => {
         fetchExperiencias();
-    });
+    }, []);
 
     const handleEdit = (experiencia: Experiencia) => {
        navigate('/curriculo/experiencias/cadastro', { state: { experiencia } })
     };
     
-    const handleDelete = (index: number) => {
-        console.log(index);
+    const handleDelete = async (experiencia: Experiencia) => {
+        try {
+            await deleteExperiencia(experiencia)
+            fetchExperiencias();
+            alert('Experiência excluída com sucesso!');
+        }
+        catch (error) {
+            console.log('Erro ao excluir:', error);
+            alert("ocorreu um erro ao excluir a experiência. Tente novamente. ");
+        }
     };
 
 
@@ -57,7 +65,7 @@ const ListarExperiencia: React.FC = () => {
                         <td>{experiencia.anoFim}</td>
                         <td>
                             <button onClick={() => handleEdit(experiencia)}>Editar</button>
-                            <button onClick={() => handleDelete(index)}>Excluir</button>
+                            <button onClick={() => handleDelete(experiencia)}>Excluir</button>
                         </td>
                     </tr>
                 ))}
