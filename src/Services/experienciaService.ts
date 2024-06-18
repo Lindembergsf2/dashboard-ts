@@ -37,7 +37,7 @@ export const deleteExperiencia = async (experiencia: Experiencia) => {
 };
 
 export const createOrUpdateExperiencia = async (experiencia: Experiencia) => {
-    if (experiencia.id === "0") {
+    if (experiencia.id === "") {
         return createExperiencia(experiencia);
     } else {
         return updateExperiencia(experiencia);

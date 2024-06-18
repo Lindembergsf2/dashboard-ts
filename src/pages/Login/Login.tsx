@@ -62,7 +62,7 @@ const Login : React.FC = () => {
                                 touched={touched.password}
                             />
                             <button type="submit" className={styles.button}>
-                                Login
+                                Entrar
                             </button>
                         </Form>
                     )}

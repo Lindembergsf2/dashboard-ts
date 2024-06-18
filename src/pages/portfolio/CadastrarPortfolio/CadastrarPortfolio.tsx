@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from './CadastrarPortfolio.module.css';
 
 import { Formik, Form } from "formik";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import * as Yup from 'yup';
 
 import Input from "../../../components/forms/Input";
 
-interface FormValues {
-    link: string;
-    image: string;
-    title: string;
-};
+import { Portfolio, createOrUpdatePortfolio } from "../../../Services/portfolioService";
 
-const initialValues: FormValues = {
+
+const initialValues: Portfolio = {
+    id: "0",
     link: "",
     image: "",
-    title: "",
+    title: ""
 };
 
 const validationSchema = Yup.object().shape({
@@ -29,15 +28,33 @@ const validationSchema = Yup.object().shape({
 
 const CadastrarPortfolio: React.FC = () => {
 
-    const onSubmit = (values: FormValues, { resetForm }: { resetForm: () => void }) => {
-        console.log({ values })
-        resetForm();
-        alert('Formulário enviado com sucesso!');
-    }
+    const navigate = useNavigate();
+    const location = useLocation();
+    const portfolio = location.state?.portfolio || null;
+
+    useEffect(() => {
+        console.log(location)
+    }, [])
+
+    const onSubmit = async (values: Portfolio, { resetForm }: { resetForm: () => void }) => {
+        try {
+            console.log({ values })
+            await createOrUpdatePortfolio(values);
+            resetForm();
+            navigate('/portfolio/lista')
+            alert('Formulário enviado com sucesso!');
+        } catch (error) {
+            console.error('Erro ao enviar o formulário:', error);
+            alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+        }
+    };
 
     return (
         <div className={styles.formWrapper}>
-            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+            <Formik 
+            initialValues={portfolio || initialValues} 
+            onSubmit={onSubmit} 
+            validationSchema={validationSchema}>
                 {({ errors, touched }) => (
                     <Form className={styles.form}>
 

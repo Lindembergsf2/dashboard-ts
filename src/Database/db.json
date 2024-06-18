@@ -42,5 +42,24 @@
       "anoFim": "2020"
     }
   ],
-  "portfolio": []
+  "portfolio": [
+    {
+      "id": "2",
+      "link": "https://www.instagram.com/p/CrIxZZ8ABTb/?img_index=2",
+      "image": "https://i.ibb.co/kcFhcxF/card-site-2.png",
+      "title": "Material Social Media Loja de Piscinas"
+    },
+    {
+      "id": "2",
+      "link": "https://lindemberglima.netlify.app/",
+      "image": "https://lindemberglima.netlify.app/Assets/card%20site.png",
+      "title": "Site pessoal construído em HTML e CSS"
+    },
+    {
+      "id": "3",
+      "link": "https://www.instagram.com/p/CrI1VjBgYVg/?img_index=2",
+      "image": "https://lindemberglima.netlify.app/Assets/card%20site%203.png",
+      "title": "Material Social Media Estética Automotiva"
+    }
+  ]
 }
