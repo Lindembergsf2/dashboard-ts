@@ -8,7 +8,8 @@ import styles from './Login.module.css';
 
 
 import Input from "../../components/forms/Input";
-import { login } from "../../Services/authService";
+import { login as LoginService } from "../../Services/authService";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface LoginValues {
     email: string;
@@ -31,10 +32,12 @@ const validationSchema = Yup.object().shape({
 
 const Login: React.FC = () => {
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const onSubmit = async (values: LoginValues) => {
         try {
-            await login(values.email, values.password);
+            const user = await LoginService(values.email, values.password);
+            login(user);
             navigate('/');
             console.log({ values });
         } catch (error) {
@@ -51,7 +54,7 @@ const Login: React.FC = () => {
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}>
                     {({ errors, touched }) => (
-                        <Form className={styles.form}>
+                        <Form className={styles.form} >
                             <h2 className={styles.title}>Login</h2>
                             <Input
                                 placeholder="Email"
