@@ -1,10 +1,14 @@
 import React from "react";
 
-import styles from './Login.module.css';
-
 import { Formik, Form } from "formik";
 import * as Yup from 'yup';
+import { useNavigate } from "react-router-dom";
+
+import styles from './Login.module.css';
+
+
 import Input from "../../components/forms/Input";
+import { login } from "../../Services/authService";
 
 interface LoginValues {
     email: string;
@@ -25,11 +29,13 @@ const validationSchema = Yup.object().shape({
         .required("Senha obrigatória"),
 });
 
-const Login : React.FC = () => {
+const Login: React.FC = () => {
+    const navigate = useNavigate();
 
     const onSubmit = async (values: LoginValues) => {
         try {
-            //Lógica de login
+            await login(values.email, values.password);
+            navigate('/');
             console.log({ values });
         } catch (error) {
             console.log('Erro ao logar:', error);
@@ -40,7 +46,7 @@ const Login : React.FC = () => {
         <div className={styles.loginWrapper}>
             <div className={styles.formWapper}>
 
-                <Formik 
+                <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}>
@@ -69,7 +75,7 @@ const Login : React.FC = () => {
                 </Formik>
 
             </div>
-            
+
         </div>
     )
 };
