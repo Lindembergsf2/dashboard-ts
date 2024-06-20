@@ -1,10 +1,10 @@
 {
-  "usuarios": [
+  "users": [
     {
       "id": "1",
       "nome": "Lindemberg Lima",
       "email": "teste@email.com",
-      "password": "lindembergsf2"
+      "password": "teste123"
     }
   ],
   "informacoes": [
