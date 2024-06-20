@@ -34,7 +34,7 @@ export const deletePortfolio = async (portfolio: Portfolio) => {
 };
 
 export const createOrUpdatePortfolio = async (portfolio: Portfolio) => {
-    if (portfolio.id === "0" || portfolio.id === undefined) {
+    if (portfolio.id === "" || portfolio.id === undefined) {
         return await createPortfolio(portfolio);
     } else {
         return await updatePortfolio(portfolio);

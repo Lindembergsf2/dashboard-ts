@@ -9,7 +9,7 @@
   ],
   "informacoes": [
     {
-      "id": "1",
+      "id": "0",
       "foto": "https://github.com/lindembergsf2.png",
       "nome": "Lindemberg Lima",
       "titulo": "Sua ideia se torna realidade",
@@ -34,7 +34,7 @@
       "anoFim": "2024"
     },
     {
-      "id": "4",
+      "id": "3",
       "titulo": "Bootcamp de Desenvolvimento de Software (Usina Academy)",
       "descricao": "",
       "tipo": "Acadêmico",
@@ -42,7 +42,7 @@
       "anoFim": "2024"
     },
     {
-      "id": "5",
+      "id": "4",
       "titulo": "Eletricista (Autônomo MEI)",
       "descricao": "",
       "tipo": "Profissional",
@@ -52,19 +52,19 @@
   ],
   "portfolio": [
     {
-      "id": "2",
+      "id": "0",
       "link": "https://www.instagram.com/p/CrIxZZ8ABTb/?img_index=2",
       "image": "https://i.ibb.co/kcFhcxF/card-site-2.png",
       "title": "Material Social Media Loja de Piscinas"
     },
     {
-      "id": "2",
+      "id": "1",
       "link": "https://lindemberglima.netlify.app/",
       "image": "https://lindemberglima.netlify.app/Assets/card%20site.png",
       "title": "Site pessoal construído em HTML e CSS"
     },
     {
-      "id": "3",
+      "id": "2",
       "link": "https://www.instagram.com/p/CrI1VjBgYVg/?img_index=2",
       "image": "https://lindemberglima.netlify.app/Assets/card%20site%203.png",
       "title": "Material Social Media Estética Automotiva"
