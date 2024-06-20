@@ -1,0 +1,7 @@
+.formWrapper{
+    .formWrapper {
+        display: flex;
+        justify-content: center;
+        border: none;
+    }    
+}
