@@ -1,0 +1,28 @@
+.button {
+    border: none;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: #2196F3;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #1976D2;
+    font-weight: 600;
+    text-shadow: #ffffff;
+}
+
+.redButton {
+    background-color: #ff6666;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.redButton:hover {
+    background-color: #cc0000;
+}

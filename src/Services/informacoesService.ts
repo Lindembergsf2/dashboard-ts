@@ -9,16 +9,16 @@ export interface Informacoes {
 };
 
 export async function updateInformacao(informacao: Informacoes): Promise<Informacoes> {
-    const response = await api.put<Informacoes>("/informacoes/1", informacao);
+    const response = await api.put<Informacoes>("/informacoes/0", informacao);
     return response.data;
 };
 
 export async function getInformacao(): Promise<Informacoes> {
-    const response = await api.get<Informacoes>("/informacoes/1");
+    const response = await api.get<Informacoes>("/informacoes/0");
     return response.data;
 };
 
 export async function deleteInformacao(informacao: Informacoes): Promise<Informacoes> {
-    const response = await api.delete<Informacoes>("/informacoes/1", { data: informacao });
+    const response = await api.delete<Informacoes>("/informacoes/0", { data: informacao });
     return response.data;
 };

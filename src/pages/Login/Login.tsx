@@ -11,7 +11,9 @@ import Input from "../../components/forms/Input";
 import { login as LoginService } from "../../Services/authService";
 import { useAuth } from "../../contexts/AuthContext";
 
-import { Form } from "../../components/forms/Form/";
+import Form from "../../components/forms/Form";
+import Button from "../../components/common/Button";
+import Title from "../../components/common/Title/Title";
 
 interface LoginValues {
     email: string;
@@ -49,39 +51,6 @@ const Login: React.FC = () => {
 
     return (
         <div className={styles.loginWrapper}>
-            {/* <div className={styles.formWapper}>
-
-                <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                    onSubmit={onSubmit}>
-                    {({ errors, touched }) => (
-                        <Form className={styles.form} >
-                            <h2 className={styles.title}>Login</h2>
-                            <Input
-                                placeholder="Email"
-                                name="email"
-                                type="email"
-                                errors={errors.email}
-                                touched={touched.email}
-                            />
-                            <Input
-                                placeholder="Senha"
-                                name="password"
-                                type="password"
-                                errors={errors.password}
-                                touched={touched.password}
-                            />
-                            <button type="submit" className={styles.button}>
-                                Entrar
-                            </button>
-                        </Form>
-                    )}
-                </Formik>
-
-                
-
-            </div> */}
 
             <Form
             initialValues={initialValues}
@@ -91,7 +60,7 @@ const Login: React.FC = () => {
                 {({ errors, touched }) => (
 
                     <>
-                    <h2 className={styles.title}>Login</h2>
+                    <Title>Login</Title>
 
                     <Input
                         placeholder="Email"
@@ -107,9 +76,8 @@ const Login: React.FC = () => {
                         errors={errors.password}
                         touched={touched.password}
                     />
-                    <button type="submit" className={styles.button}>
-                        Entrar
-                    </button>
+
+                    <Button type="submit">Entrar</Button>  
                     
                     </>
                 )}

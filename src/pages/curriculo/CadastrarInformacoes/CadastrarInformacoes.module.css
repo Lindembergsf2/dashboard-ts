@@ -67,18 +67,6 @@
     background-color: black;
 }
 
-.errorMsg {
-    color: red;
-    font-size: 13px;
-    padding-left: 5px;
-}
-
-.error {
-    border-color: red;
-    border-style: solid;
-    border-width: 1px;
-}
-
 .deleteButton {
     background-color: #ff6666;
     width: 30%;

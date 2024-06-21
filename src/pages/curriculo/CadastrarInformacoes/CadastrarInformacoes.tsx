@@ -9,6 +9,7 @@ import Input from "../../../components/forms/Input";
 import TextArea from "../../../components/forms/Textarea";
 import { Informacoes, updateInformacao, getInformacao } from "../../../Services/informacoesService";
 import InformacoesCard from "./InformacoesCard";
+import Button from "../../../components/common/Button";
 
 const CadastrarInformacoes: React.FC = () => {
 
@@ -123,11 +124,7 @@ const CadastrarInformacoes: React.FC = () => {
 
                         <InformacoesCard informacao={informacoes} />
 
-                        <button type="button"
-                            onClick={handleDelete}
-                            className={`${styles.deleteButton} ${styles.button}`}>
-                            Deletar
-                        </button>
+                        <Button onClick={handleDelete} red>Deletar</Button>
 
                     </div>
                 )}

@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, FormikHelpers, FormikProps, FormikValues, Form as FormikForm } from "formik";
 import * as Yup from "yup";
 
-import styles from "./Form.module.css";
+import styles from "./Form.module.css"
 
 interface FormProps<T> {
     initialValues: T;
@@ -14,7 +14,7 @@ interface FormProps<T> {
 
 const Form = <T extends FormikValues>({ initialValues, validationSchema, onSubmit, children }: FormProps<T>) => {
     return (
-        <div className={styles.formWrapper}>
+        <div className={styles.formWapper}>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
