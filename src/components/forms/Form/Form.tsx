@@ -1,26 +1,31 @@
 import React from "react";
 
-import { Formik } from "formik";
+import { Formik, FormikHelpers, FormikProps, FormikValues, Form as FormikForm } from "formik";
+import * as Yup from "yup";
 
 import styles from "./Form.module.css";
 
-interface FormProps {
-    initialValues: object;
-    validationSchema: object;
-    onSubmit: () => void;
-    children: React.ReactNode;
+interface FormProps<T> {
+    initialValues: T;
+    validationSchema: Yup.ObjectSchema<Partial<T>>;
+    onSubmit: (values: T, formikHelpers: FormikHelpers<T>) => void | Promise<void>;
+    children: (formikProps: FormikProps<T>) => React.ReactNode;
 }
 
-const Form: React.FC<FormProps> = ({ children }) => {
+const Form = <T extends FormikValues>({ initialValues, validationSchema, onSubmit, children }: FormProps<T>) => {
     return (
         <div className={styles.formWrapper}>
-        <Formik 
-            initialValues={initialValues} 
-            validationSchema={validationSchema} 
-            onSubmit={onSubmit}
-        >
-            {children}
-        </Formik>
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+            >
+                {(formikProps) => (
+                    <FormikForm className={styles.form}>
+                    { children(formikProps) }
+                    </FormikForm>
+                )}
+            </Formik>
         </div>
     )
 };
