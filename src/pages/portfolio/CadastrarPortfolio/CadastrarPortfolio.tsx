@@ -2,14 +2,16 @@ import React, { useEffect } from "react";
 
 import styles from './CadastrarPortfolio.module.css';
 
-import { Formik, Form } from "formik";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import * as Yup from 'yup';
 
 import Input from "../../../components/forms/Input";
+import Form from "../../../components/forms/Form";
 
 import { Portfolio, createOrUpdatePortfolio } from "../../../Services/portfolioService";
+import Title from "../../../components/common/Title";
+import Button from "../../../components/common/Button";
 
 
 const initialValues: Portfolio = {
@@ -50,15 +52,21 @@ const CadastrarPortfolio: React.FC = () => {
     };
 
     return (
-        <div className={styles.formWrapper}>
-            <Formik 
-            initialValues={portfolio || initialValues} 
-            onSubmit={onSubmit} 
-            validationSchema={validationSchema}>
+        <div className={styles.container}>
+            <Form
+                initialValues={portfolio || initialValues}
+                onSubmit={onSubmit}
+                validationSchema={validationSchema}>
                 {({ errors, touched }) => (
-                    <Form className={styles.form}>
+                    <>
+                        {
+                            !portfolio?
+                            <Title> Cadastro de Portfólio</Title>
+                            : 
+                            <Title> Edição de Portfólio</Title>
+                        }
 
-                        <h2 className={styles.title}> Cadastro de Portfólio</h2>
+                        
 
                         <Input
                             placeholder="Link"
@@ -78,11 +86,11 @@ const CadastrarPortfolio: React.FC = () => {
                             errors={errors.title}
                             touched={touched.title}
                         />
-                        <button className={styles.button} type="submit">Cadastrar</button>
+                        <Button type="submit">Salvar</Button>
 
-                    </Form>
+                    </>
                 )}
-            </Formik>
+            </Form>
         </div>
     );
 };

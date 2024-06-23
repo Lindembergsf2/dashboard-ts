@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import styles from './ListarExperiencias.module.css'
+
 import { Experiencia, getExperiencias, deleteExperiencia } from "../../../Services/experienciaService";
+import { Column, Table } from "../../../components/common/Table/Table";
 
 
 
@@ -38,40 +39,26 @@ const ListarExperiencia: React.FC = () => {
         }
         catch (error) {
             console.log('Erro ao excluir:', error);
-            alert("ocorreu um erro ao excluir a experiência. Tente novamente. ");
+            alert("Ocorreu um erro ao excluir a experiência. Tente novamente. ");
         }
     };
 
+    const columns: Column<Experiencia>[] = [
+        { header: 'Título', accessor: 'titulo' },
+        { header: 'Descrição', accessor: 'descricao' },
+        { header: 'Tipo', accessor: 'tipo' },
+        { header: 'Ano Inicio', accessor: 'anoInicio' },
+        { header: 'Ano Fim', accessor: 'anoFim' },
+    ];
 
-    return (
-        <table className={styles.table}>
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                    <th>Tipo</th>
-                    <th>Ano de Início</th>
-                    <th>Ano de Fim</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {experiencias.map((experiencia, index) => (
-                    <tr key={index}>
-                        <td>{experiencia.titulo}</td>
-                        <td>{experiencia.descricao}</td>
-                        <td>{experiencia.tipo}</td>
-                        <td>{experiencia.anoInicio}</td>
-                        <td>{experiencia.anoFim}</td>
-                        <td>
-                            <button onClick={() => handleEdit(experiencia)}>Editar</button>
-                            <button onClick={() => handleDelete(experiencia)}>Excluir</button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    );
+
+    return <Table
+            columns={ columns }
+            data={ experiencias }
+            handleEdit={ handleEdit }
+            handleDelete={ handleDelete }
+        />
+
 };
 
 export default ListarExperiencia;

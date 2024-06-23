@@ -3,13 +3,19 @@ import React, { useState, useEffect } from "react";
 import styles from './CadastrarInformacoes.module.css';
 
 import * as Yup from 'yup';
-import { Formik, Form, } from 'formik';
 
 import Input from "../../../components/forms/Input";
 import TextArea from "../../../components/forms/Textarea";
-import { Informacoes, updateInformacao, getInformacao } from "../../../Services/informacoesService";
 import InformacoesCard from "./InformacoesCard";
 import Button from "../../../components/common/Button";
+import Form from "../../../components/forms/Form";
+import Title from "../../../components/common/Title";
+
+import { 
+    Informacoes, 
+    updateInformacao, 
+    getInformacao
+} from "../../../Services/informacoesService";
 
 const CadastrarInformacoes: React.FC = () => {
 
@@ -72,18 +78,18 @@ const CadastrarInformacoes: React.FC = () => {
     }
 
     return (
-        <div className={styles.formWrapper}>
+        <div className={styles.container}>
 
-            <Formik
+            <Form
                 initialValues={informacoes}
                 enableReinitialize={true}
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}>
                 {({ errors, touched }) => (
 
-                    <Form className={styles.form}>
+                    <>
 
-                        <h2 className={styles.title}>Informações Pessoais</h2>
+                        <Title>Informações Pessoais</Title>
 
                         <Input name="nome"
                             errors={errors.nome}
@@ -110,11 +116,11 @@ const CadastrarInformacoes: React.FC = () => {
                             placeholder="Resumo"
                         />
 
-                        <button type="submit" className={styles.button}>Cadastrar</button>
+                        <Button type="submit">Cadastrar</Button>
 
-                    </Form>
+                    </>
                 )}
-            </Formik>
+            </Form>
 
             {informacoes &&
                 Object.entries(informacoes).some(
