@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-import { Experiencia, getExperiencias, deleteExperiencia } from "../../../Services/experienciaService";
+import { Experiencias, getExperiencias, deleteExperiencia } from "../../../Services/experienciaService";
 import { Column, Table } from "../../../components/common/Table/Table";
 
 
@@ -12,7 +12,7 @@ const ListarExperiencia: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const [experiencias, setExperiencias] = useState<Experiencia[]>([]);
+    const [experiencias, setExperiencias] = useState<Experiencias[]>([]);
 
     const fetchExperiencias = async () => {
         try {
@@ -27,11 +27,11 @@ const ListarExperiencia: React.FC = () => {
         fetchExperiencias();
     }, []);
 
-    const handleEdit = (experiencia: Experiencia) => {
+    const handleEdit = (experiencia: Experiencias) => {
        navigate('/curriculo/experiencias/cadastro', { state: { experiencia } })
     };
     
-    const handleDelete = async (experiencia: Experiencia) => {
+    const handleDelete = async (experiencia: Experiencias) => {
         try {
             await deleteExperiencia(experiencia)
             fetchExperiencias();
@@ -43,12 +43,12 @@ const ListarExperiencia: React.FC = () => {
         }
     };
 
-    const columns: Column<Experiencia>[] = [
+    const columns: Column<Experiencias>[] = [
         { header: 'Título', accessor: 'titulo' },
         { header: 'Descrição', accessor: 'descricao' },
         { header: 'Tipo', accessor: 'tipo' },
-        { header: 'Ano Inicio', accessor: 'anoInicio' },
-        { header: 'Ano Fim', accessor: 'anoFim' },
+        { header: 'Ano Inicio', accessor: 'anoinicio' },
+        { header: 'Ano Fim', accessor: 'anofim' },
     ];
 
 

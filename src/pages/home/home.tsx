@@ -8,16 +8,16 @@ import Title from "../../components/common/Title";
 import InfoBox from "../../components/common/InfoBox";
 
 import { Portfolio, getPortfolio } from "../../Services/portfolioService";
-import { Experiencia, getExperienciaByTipo } from "../../Services/experienciaService";
+import { Experiencias, getExperienciasByTipo } from "../../Services/experienciaService";
 
 const Home: React.FC = () => {
     const [portfolio, setPortfolio] = useState<Portfolio[]>([]);
-    const [experienciasProfissionais, setExperienciasProfissionais] = useState<Experiencia[]>([]);
-    const [experienciasAcademicas, setExperienciasAcademicas] = useState<Experiencia[]>([]);
+    const [experienciasProfissionais, setExperienciasProfissionais] = useState<Experiencias[]>([]);
+    const [experienciasAcademicas, setExperienciasAcademicas] = useState<Experiencias[]>([]);
 
     const fetchExprienciasAcademicas = async () => {
         try {
-            const response = await getExperienciaByTipo('Acadêmico');
+            const response = await getExperienciasByTipo('Acadêmico');
             setExperienciasAcademicas(response);
         } catch (error) {
             console.log('Erro ao buscar as experiências:', error);
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 
     const fetchExperienciasProfissionais = async () => {
         try {
-            const response = await getExperienciaByTipo('Profissional');
+            const response = await getExperienciasByTipo('Profissional');
             setExperienciasProfissionais(response);
         } catch (error) {
             console.log('Erro ao buscar as experiências:', error);

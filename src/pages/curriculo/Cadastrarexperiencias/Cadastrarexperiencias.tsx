@@ -12,7 +12,7 @@ import Button from "../../../components/common/Button";
 import Title from "../../../components/common/Title";
 import Form from "../../../components/forms/Form";
 
-import { Experiencia, createOrUpdateExperiencia } from "../../../Services/experienciaService";
+import { Experiencias, createOrUpdateExperiencia } from "../../../Services/experienciaService";
 
 const CadastrarExperiencia: React.FC = () => {
 
@@ -20,24 +20,24 @@ const CadastrarExperiencia: React.FC = () => {
     const location = useLocation();
     const experiencia = location.state?.experiencia || null;
 
-    const initialValues: Experiencia = {
-        id: "0",
+    const initialValues: Experiencias = {
+        id: 0,
         titulo: "",
         descricao: "",
         tipo: "",
-        anoInicio: "",
-        anoFim: "",
+        anoinicio: "",
+        anofim: ""
     };
 
     const validationSchema = Yup.object().shape({
         titulo: Yup.string().required('Campo obrigatório'),
         tipo: Yup.string().required('Campo obrigatório'),
         descricao: Yup.string(),
-        anoInicio: Yup.string().required('Campo obrigatório').typeError('Um número é obrigatório'),
-        anoFim: Yup.string().required('Campo obrigatório').typeError('Um número é obrigatório'),
+        anoinicio: Yup.string().required('Campo obrigatório').typeError('Um número é obrigatório'),
+        anofim: Yup.string().required('Campo obrigatório').typeError('Um número é obrigatório'),
     });
 
-    const onSubmit = async (values: Experiencia, { resetForm }: { resetForm: () => void }) => {
+    const onSubmit = async (values: Experiencias, { resetForm }: { resetForm: () => void }) => {
         try {
             console.log({ values })
             await createOrUpdateExperiencia(values);
@@ -84,17 +84,17 @@ const CadastrarExperiencia: React.FC = () => {
                         ></Select>
 
                         <Input
-                            name="anoInicio"
+                            name="anoinicio"
                             placeholder="Ano de Início"
-                            errors={errors.anoInicio}
-                            touched={touched.anoInicio}
+                            errors={errors.anoinicio}
+                            touched={touched.anoinicio}
                         />
 
                         <Input
-                            name="anoFim"
-                            placeholder="Ano de Fim"
-                            errors={errors.anoFim}
-                            touched={touched.anoFim}
+                            name="anofim"
+                            placeholder="Ano de fim"
+                            errors={errors.anofim}
+                            touched={touched.anofim}
                         />
 
                         <Textarea

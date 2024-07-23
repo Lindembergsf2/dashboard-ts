@@ -4,6 +4,8 @@ import styles from './CadastrarInformacoes.module.css';
 
 import * as Yup from 'yup';
 
+//import { AxiosError } from "axios";
+
 import Input from "../../../components/forms/Input";
 import TextArea from "../../../components/forms/Textarea";
 import InformacoesCard from "./InformacoesCard";
@@ -21,8 +23,9 @@ const CadastrarInformacoes: React.FC = () => {
 
     const [informacoes, setInformacoes] = useState<Informacoes>({} as Informacoes);
 
+
     const initialValues: Informacoes = {
-        id: 1,
+        id: 0,
         foto: '',
         nome: '',
         titulo: '',
@@ -123,9 +126,7 @@ const CadastrarInformacoes: React.FC = () => {
             </Form>
 
             {informacoes &&
-                Object.entries(informacoes).some(
-                    ([key, value]) => key != "id" && value.trim() != ""
-                ) && (
+                     
                     <div className={styles.cardContainer}>
 
                         <InformacoesCard informacao={informacoes} />
@@ -133,7 +134,7 @@ const CadastrarInformacoes: React.FC = () => {
                         <Button onClick={handleDelete} red>Deletar</Button>
 
                     </div>
-                )}
+                }
         </div>
     );
 };

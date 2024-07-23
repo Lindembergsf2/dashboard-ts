@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
+
 const api = axios.create({
-    baseURL: 'https://backoffice-data-jekl.vercel.app/',
+    baseURL: apiUrl,
 });
 
 export default api;

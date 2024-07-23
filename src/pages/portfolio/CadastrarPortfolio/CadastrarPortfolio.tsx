@@ -15,7 +15,7 @@ import Button from "../../../components/common/Button";
 
 
 const initialValues: Portfolio = {
-    id: "0",
+    id: 0,
     link: "",
     image: "",
     title: ""
@@ -57,6 +57,7 @@ const CadastrarPortfolio: React.FC = () => {
                 initialValues={portfolio || initialValues}
                 onSubmit={onSubmit}
                 validationSchema={validationSchema}>
+                    
                 {({ errors, touched }) => (
                     <>
                         {

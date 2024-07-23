@@ -11,6 +11,7 @@ interface InformacoesCardProps {
 
 const InformacoesCard: React.FC<InformacoesCardProps> = ({ informacao }) => {
     const { foto, nome, titulo, resumo } = informacao;
+    console.log(informacao)
     return (
         <div className={styles.card}>
             <img src={foto} alt={`${nome}'s foto`} className={styles.foto} />

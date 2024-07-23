@@ -9,6 +9,7 @@ const ListaPortfolio: React.FC = () => {
     const navigate = useNavigate();
 
     const [portfolio, setPortfolio] = useState<Portfolio[]>([]);
+    console.log(portfolio)
 
     const fetchPortfolio = async () => {
         try {
@@ -48,33 +49,6 @@ const ListaPortfolio: React.FC = () => {
     ]
 
     return (
-        // <table className={styles.table}>
-
-        //     <thead>
-        //         <tr>
-        //             <th>Título</th>
-        //             <th>imagem</th>
-        //             <th>Links</th>
-        //             <th>Ações</th>
-        //         </tr>
-        //     </thead>
-
-        //     <tbody>
-        //         {portfolio.map((portfolio, index) => (
-        //             <tr key={index}>
-        //                 <td>{portfolio.title}</td>
-        //                 <td><img src={portfolio.image} alt={portfolio.title} className={styles.image} /></td>
-        //                 <td><a href={portfolio.link} target="_blank" rel="noreferrer">{portfolio.link}</a></td>
-        //                 <td>
-        //                     <button className={styles.btnEdit} onClick={() => handleEdit(portfolio)}>Editar</button>
-        //                     <button className={styles.btnDelete} onClick={() => handleDelete(portfolio)}>Deletar</button>
-        //                 </td>
-
-        //             </tr>
-        //         ))}
-        //     </tbody>
-
-        // </table>
 
         <Table 
             columns={columns}

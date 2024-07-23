@@ -1,14 +1,13 @@
 import api from "./api";
 
 export interface Portfolio {
-    id: string;
+    id: number;
     title: string;
     image: string;
     link: string;
 };
 
 export const createPortfolio = async (portfolio: Portfolio) => {
-    portfolio.id = ((await getPortfolio()).length +1).toString();
     const response = await api.post("/portfolio", portfolio);
     return response.data;
 };
@@ -34,7 +33,7 @@ export const deletePortfolio = async (portfolio: Portfolio) => {
 };
 
 export const createOrUpdatePortfolio = async (portfolio: Portfolio) => {
-    if (portfolio.id === "" || portfolio.id === undefined) {
+    if (portfolio.id === 0 || portfolio.id === undefined) {
         return await createPortfolio(portfolio);
     } else {
         return await updatePortfolio(portfolio);

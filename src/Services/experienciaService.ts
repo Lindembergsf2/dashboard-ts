@@ -1,16 +1,15 @@
 import api from "./api";
 
-export interface Experiencia {
-    id: string;
+export interface Experiencias {
+    id: number;
     titulo: string;
     descricao?: string;
     tipo: string;
-    anoInicio: string;
-    anoFim: string;
+    anoinicio: string,
+    anofim: string
 };
 
-export const createExperiencia = async (experiencia: Experiencia) => {
-    experiencia.id = ((await getExperiencias()).length +1).toString();
+export const createExperiencia = async (experiencia: Experiencias) => {
     const response = await api.post("/experiencias", experiencia);
     return response.data;
 };
@@ -20,29 +19,29 @@ export const getExperiencias = async () => {
     return response.data;
 };
 
-export const getExperienciaById = async (id: number) => {
+export const getExperienciaById = async (id: string) => {
     const response = await api.get(`/experiencias/${id}`);
     return response.data;
 };
 
-export const getExperienciaByTipo = async (tipo: string): Promise<Experiencia[]> =>  {
-    const response = await api.get<Experiencia[]>(`/experiencias?tipo=${tipo}`);
+export const getExperienciasByTipo = async (tipo: string): Promise<Experiencias[]> =>  {
+    const response = await api.get<Experiencias[]>(`/experiencias?tipo=${tipo}`);
     return response.data;
 }
 
-export const updateExperiencia = async (experiencia: Experiencia) => {
+export const updateExperiencia = async (experiencia: Experiencias) => {
     const response = await api.put(`/experiencias/${experiencia.id}`, experiencia);
     return response.data;
 };
 
-export const deleteExperiencia = async (experiencia: Experiencia) => {
-    const response = await api.delete<Experiencia>(`/experiencias/${experiencia.id}`);
+export const deleteExperiencia = async (experiencia: Experiencias) => {
+    const response = await api.delete<Experiencias>(`/experiencias/${experiencia.id}`);
     return response.data;
     
 };
 
-export const createOrUpdateExperiencia = async (experiencia: Experiencia) => {
-    if (experiencia.id === "") {
+export const createOrUpdateExperiencia = async (experiencia: Experiencias) => {
+    if (experiencia.id === 0 || experiencia.id === null) {
         return createExperiencia(experiencia);
     } else {
         return updateExperiencia(experiencia);
