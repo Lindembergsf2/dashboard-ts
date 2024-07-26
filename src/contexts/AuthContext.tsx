@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect } from "react";
-import { User } from "../Services/userService";
+import { User } from "../Services/authService";
 
 interface AuthContextProps {
     authenticated: boolean;
